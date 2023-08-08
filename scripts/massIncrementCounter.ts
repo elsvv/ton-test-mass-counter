@@ -9,7 +9,6 @@ export async function run(provider: NetworkProvider, args: string[]) {
     const counterAddress = Address.parse('EQAT6xANZ5uhNh5WORYOLpTLRuU6XCs479g02jAFdvYasQe6');
 
     const mnemonic = process.env.PW_MNEMONIC?.split(' ')!;
-    console.log({ mnemonic });
 
     const keypair = await mnemonicToPrivateKey(mnemonic);
     const pwallet = provider.open(PWallet.createFromPublicKey(keypair.publicKey));
@@ -24,7 +23,7 @@ export async function run(provider: NetworkProvider, args: string[]) {
         return;
     }
 
-    const messages = Array.from({ length: 254 }, () => ({ recipient: counterAddress, value: toNano('0.002') }));
+    const messages = Array.from({ length: 255 }, () => ({ recipient: counterAddress, value: toNano('0.0014') }));
 
     const counter = provider.open(Counter.createFromAddress(counterAddress));
     const counterBefore = await counter.getCounter();
