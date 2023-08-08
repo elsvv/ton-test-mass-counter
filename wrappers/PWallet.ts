@@ -13,7 +13,7 @@ import {
 } from 'ton-core';
 import { KeyPair, sign } from 'ton-crypto';
 
-type MessageToSend = {
+export type MessageToSend = {
     recipient: Address;
     value: bigint;
     init?: StateInit;
